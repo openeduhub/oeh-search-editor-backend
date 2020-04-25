@@ -1,0 +1,9 @@
+type Query {
+    dummy: Boolean
+}
+
+type Mutation {
+    test(
+        foo: String!
+    ): String!
+}
