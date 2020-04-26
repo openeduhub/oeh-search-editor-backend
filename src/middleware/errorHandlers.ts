@@ -8,19 +8,27 @@ const handle404Error = (router: Router) => {
 };
 
 const handleClientError = (router: Router) => {
-    router.use(
-        (err: Error, req: Request, res: Response, next: NextFunction) => {
-            ErrorHandler.clientError(err, res, next);
-        },
-    );
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.clientError(err, res, next);
+    });
+};
+
+const handleAuthorizationError = (router: Router) => {
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.authorizationError(err, res, next);
+    });
 };
 
 const handleServerError = (router: Router) => {
-    router.use(
-        (err: Error, req: Request, res: Response, next: NextFunction) => {
-            ErrorHandler.serverError(err, res, next);
-        },
-    );
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.serverError(err, res, next);
+    });
 };
 
-export default [handle404Error, handleClientError, handleServerError];
+export default [
+    handle404Error,
+    handleClientError,
+    handleAuthorizationError,
+    handleServerError,
+];
+

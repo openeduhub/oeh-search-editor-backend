@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { HTTPClientError, HTTP404Error } from '../utils/httpErrors';
+import { UnauthorizedError } from 'express-jwt';
 
 export const notFoundError = () => {
     throw new HTTP404Error('Method not found.');
@@ -9,6 +10,15 @@ export const clientError = (err: Error, res: Response, next: NextFunction) => {
     if (err instanceof HTTPClientError) {
         console.warn(err);
         res.status(err.statusCode).send(err.message);
+    } else {
+        next(err);
+    }
+};
+
+export const authorizationError = (err: Error, res: Response, next: NextFunction) => {
+    if (err instanceof UnauthorizedError) {
+        console.warn(err);
+        res.status(err.status).send(err.inner.message);
     } else {
         next(err);
     }
