@@ -1,12 +1,8 @@
 import { Client } from 'ts-postgres';
+import { config } from './config';
 
 export async function markAsRecommended(id: string, marked: boolean): Promise<string | null> {
-    const client = new Client({
-        host: 'localhost',
-        user: 'collections',
-        password: 'collections',
-        database: 'search',
-    });
+    const client = new Client(config.db);
     await client.connect();
     let result: string | null;
     if (marked) {

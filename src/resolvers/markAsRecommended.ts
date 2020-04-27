@@ -6,7 +6,7 @@ const markAsRecommendedResolver: MutationResolvers['markAsRecommended'] = async 
     args,
     context,
     info,
-): Promise<string | null> => {
+): Promise<null> => {
     await markAsRecommended(args.id, args.marked);
     return null;
 };

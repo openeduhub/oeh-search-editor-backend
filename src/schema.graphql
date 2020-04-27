@@ -1,12 +1,12 @@
 type Query {
-    dummy: Boolean
+    dummy: Void
 }
 
 type Mutation {
     markAsRecommended(
         id: ID!
         marked: Boolean!
-    ): String
+    ): Void
 }
 
 enum Void {
