@@ -5,7 +5,8 @@ type Query {
 type Mutation {
     markAsRecommended(
         id: ID!
-    ): Void
+        marked: Boolean!
+    ): String
 }
 
 enum Void {
