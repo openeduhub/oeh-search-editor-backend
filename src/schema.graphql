@@ -7,6 +7,10 @@ type Mutation {
         id: ID!
         marked: Boolean!
     ): Void
+    setDisplayState(
+        id: ID!
+        displayed: Boolean!
+    ): Void
 }
 
 enum Void {

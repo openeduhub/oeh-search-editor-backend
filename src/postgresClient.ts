@@ -1,9 +1,13 @@
 import { Client } from 'ts-postgres';
 import { config } from './config';
 
-export async function markAsRecommended(id: string, marked: boolean): Promise<string | null> {
+async function getClient(){
     const client = new Client(config.db);
-    await client.connect();
+    client.connect();
+    return client;
+}
+export async function markAsRecommended(id: string, marked: boolean): Promise<string | null> {
+    const client = await getClient();
     let result: string | null;
     if (marked) {
         result = (
@@ -22,4 +26,8 @@ export async function markAsRecommended(id: string, marked: boolean): Promise<st
         await client.query('UPDATE "references" SET last_updated = now() WHERE uuid = $1', [id]);
     }
     return result;
+}
+export async function setDisplayState(id: string, displayed: boolean): Promise<string | null> {
+    const client = await getClient();
+    return (await client.query('UPDATE "references" SET enabled = $1, last_updated = now() WHERE uuid = $2', [displayed, id])).status;
 }

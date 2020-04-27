@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "graphql-codegen -w & tsc-watch --build --onSuccess \"bash -c 'npm run copy-schemas && node ./dist/server.js'\"",
+    "start-dev": "DB_USER=collections DB_PASSWORD=collections DB_DATABASE=search npm run start",
     "watch": "graphql-codegen -w & tsc-watch --build --onSuccess \"npm run copy-schemas\"",
     "clean": "rm -rf dist",
     "prebuild": "graphql-codegen",
