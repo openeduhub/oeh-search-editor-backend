@@ -2,13 +2,13 @@ import {
     // QueryResolvers,
     MutationResolvers,
  } from 'src/generated/graphql';
-import test from './test';
+import markAsRecommended from './markAsRecommended';
 
 // const Query: QueryResolvers = {
 // };
 
 const Mutation: MutationResolvers = {
-    test,
+    markAsRecommended,
 }
 
 export default {

@@ -3,7 +3,11 @@ type Query {
 }
 
 type Mutation {
-    test(
-        foo: String!
-    ): String!
+    markAsRecommended(
+        id: ID!
+    ): Void
+}
+
+enum Void {
+    VOID
 }
