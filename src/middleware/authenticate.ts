@@ -11,12 +11,12 @@ const checkJwt = jwt({
         // cache: true,
         // rateLimit: true,
         // jwksRequestsPerMinute: 5,
-        jwksUri: `https://demo.identityserver.io/.well-known/openid-configuration/jwks`,
+        jwksUri: `https://idm.wirlernenonline.de/auth/realms/master/protocol/openid-connect/certs`,
     }),
 
     // Validate the audience and the issuer.
     // audience: 'YOUR_API_IDENTIFIER',
-    issuer: `https://demo.identityserver.io`,
+    // issuer: `https://demo.identityserver.io`,
     algorithms: ['RS256'],
 });
 
