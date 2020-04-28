@@ -16,7 +16,7 @@ const checkJwt = jwt({
 
     // Validate the audience and the issuer.
     // audience: 'YOUR_API_IDENTIFIER',
-    // issuer: `https://demo.identityserver.io`,
+    issuer: `https://idm.wirlernenonline.de/auth/realms/master`,
     algorithms: ['RS256'],
 });
 
