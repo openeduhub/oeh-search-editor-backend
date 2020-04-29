@@ -3,13 +3,15 @@ type Query {
 }
 
 type Mutation {
+    """Set an editor's choice mark"""
     markAsRecommended(
         id: ID!
-        marked: Boolean!
+        value: Boolean!
     ): Void
+    """Show or hide the entry in results"""
     setDisplayState(
         id: ID!
-        displayed: Boolean!
+        value: Boolean!
     ): Void
 }
 

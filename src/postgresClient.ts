@@ -7,10 +7,10 @@ async function getClient() {
     return client;
 }
 
-export async function markAsRecommended(id: string, marked: boolean): Promise<void> {
+export async function markAsRecommended(id: string, value: boolean): Promise<void> {
     const client = await getClient();
     try {
-        if (marked) {
+        if (value) {
             await client.query('INSERT INTO "collections_references" VALUES ($1,$2,now(),null)', [
                 'EDITORIAL',
                 id,
@@ -29,12 +29,12 @@ export async function markAsRecommended(id: string, marked: boolean): Promise<vo
     }
 }
 
-export async function setDisplayState(id: string, displayed: boolean): Promise<void> {
+export async function setDisplayState(id: string, value: boolean): Promise<void> {
     const client = await getClient();
     try {
         await client.query(
             'UPDATE "references" SET enabled = $1, last_updated = now() WHERE uuid = $2',
-            [displayed, id],
+            [value, id],
         );
     } finally {
         client.end();

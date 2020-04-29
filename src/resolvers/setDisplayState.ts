@@ -7,7 +7,7 @@ const setDisplayStateResolver: MutationResolvers['setDisplayState'] = async (
     context,
     info,
 ): Promise<null> => {
-    await setDisplayState(args.id, args.displayed);
+    await setDisplayState(args.id, args.value);
     return null;
 };
 
